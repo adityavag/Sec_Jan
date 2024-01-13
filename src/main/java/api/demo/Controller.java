@@ -1,0 +1,20 @@
+package api.demo;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class Controller {
+    @GetMapping("/")
+    public String home() {
+        return "<center><h1>Welcome!</h1>";
+    }
+    @GetMapping("/user")
+    public String user() {
+        return "<center><h1>Welcome User!</h1>";
+    }
+    @GetMapping("/admin")
+    public String admin() {
+        return "<center><h1>Welcome Admin!</h1>";
+    }
+}
