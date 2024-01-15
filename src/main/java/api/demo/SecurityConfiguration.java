@@ -39,7 +39,8 @@ public class SecurityConfiguration {
                                 .requestMatchers("/user").authenticated()
                                 .requestMatchers("/admin").hasRole("ADMIN")
                         )
-                .formLogin(form->form.loginPage("/login").permitAll());
+                .formLogin(Customizer.withDefaults())
+                .oauth2Login(Customizer.withDefaults());
         return httpSecurity.build();
     }
     @Bean
