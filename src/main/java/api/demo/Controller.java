@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import api.demo.models.User;
 import api.demo.models.UserDto;
 
-@RestController
+@org.springframework.stereotype.Controller
 public class Controller {
     @Autowired
     UserRepository userRepository;
@@ -31,7 +31,15 @@ public class Controller {
     public String admin() {
         return "<center><h1>Welcome Admin!</h1>";
     }
+    @GetMapping("/xd")
+    public String xd() {
+        return "xd";
+    }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
     @PostMapping("/register") 
     public String registerUser(@RequestBody UserDto userDto) {
         User user = new User();
