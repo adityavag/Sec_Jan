@@ -34,8 +34,9 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                                 .requestMatchers("/").permitAll()
+                                .requestMatchers("/register").permitAll()
                                 .requestMatchers("/user").authenticated()
-                                .requestMatchers("/admin").hasRole("admin")
+                                .requestMatchers("/admin").hasRole("ADMIN")
                         )
                 .formLogin(Customizer.withDefaults());
         return httpSecurity.build();
@@ -46,7 +47,7 @@ public class SecurityConfiguration {
     }
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // return new BCryptPasswordEncoder();
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
+        // return NoOpPasswordEncoder.getInstance();
     }
 }
